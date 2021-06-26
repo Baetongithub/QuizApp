@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="brain_padding">120dp</dimen>
+    <dimen name="_padding">140dp</dimen>
+    <dimen name="main_illustration_padding">70dp</dimen>
+    <dimen name="main_rl_padding_end_start">70dp</dimen>
+    <dimen name="seek_bar_margin_start">-15dp</dimen>
+    <dimen name="all_dropdown_padding">10dp</dimen>
+    <dimen name="dropdown_tv_elevation">5dp</dimen>
+</resources>
