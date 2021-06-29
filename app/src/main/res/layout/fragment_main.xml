@@ -68,7 +68,7 @@
             android:layout_marginTop="5dp"
             android:max="20"
             android:thumbOffset="0dp"
-            android:progress="0"
+            android:progress="10"
             android:progressBackgroundTint="#ECEBED"
             android:progressTint="#BE52F2"
             android:thumbTint="#BE52F2" />
