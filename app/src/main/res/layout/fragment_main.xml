@@ -67,10 +67,10 @@
             android:layout_marginStart="@dimen/seek_bar_margin_start"
             android:layout_marginTop="5dp"
             android:max="20"
-            android:thumbOffset="0dp"
             android:progress="10"
             android:progressBackgroundTint="#ECEBED"
             android:progressTint="#BE52F2"
+            android:thumbOffset="0dp"
             android:thumbTint="#BE52F2" />
 
         <TextView
@@ -84,9 +84,9 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_categ"
+            style="@style/card_dropdown_tvs"
             android:layout_below="@id/tv_category_main"
-            app:cardCornerRadius="10dp"
-            style="@style/card_dropdown_tvs">
+            app:cardCornerRadius="10dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/text_input_layout_dropdown_tv"
@@ -95,8 +95,8 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTVCategory"
-                    android:text="@string/all"
                     style="@style/autocompleteTV_dropdown"
+                    android:text="@string/all"
                     tools:ignore="LabelFor" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -113,8 +113,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_difficulty"
-            android:layout_below="@id/tv_difficulty_main"
             style="@style/card_dropdown_tvs"
+            android:layout_below="@id/tv_difficulty_main"
             app:cardCornerRadius="10dp">
 
             <com.google.android.material.textfield.TextInputLayout

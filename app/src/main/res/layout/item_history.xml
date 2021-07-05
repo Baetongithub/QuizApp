@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/backgr_all"
+            android:clipToPadding="false"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:elevation="15dp"
+            android:padding="@dimen/all_dropdown_padding">
+
+            <TextView
+                android:id="@+id/tv_category_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/category"
+                android:textColor="#1F2041"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="3dp"
+                android:layout_alignTop="@id/tv_category_history"
+                android:layout_alignEnd="@id/tv_category_history"
+                android:layout_alignBottom="@id/tv_category_history"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/vector" />
+
+            <TextView
+                android:id="@+id/tv_correct_answers_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_category_history"
+                android:layout_marginTop="3dp"
+                android:text="@string/correct_answers"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_difficulty_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_correct_answers_history"
+                android:layout_marginTop="1dp"
+                android:text="@string/difficulty"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/tv_category_history"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="7.2dp"
+                android:text="12 may 2019 20:32"
+                android:textSize="9sp" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

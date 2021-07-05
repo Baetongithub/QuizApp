@@ -1,6 +1,10 @@
 package com.geektech.less1quizappkt2.extensions
 
-import android.app.Activity
+import android.content.Context
 import android.widget.Toast
 
-fun Activity.toast(txt: String) = Toast.makeText(this, txt, Toast.LENGTH_SHORT).show()
+fun Context.toast(txt: String) = Toast.makeText(this, txt, Toast.LENGTH_SHORT).show()
+
+fun String.toFormat(): String {
+    return String.format(this)
+}
