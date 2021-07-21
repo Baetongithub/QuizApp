@@ -10,6 +10,7 @@ import com.geektech.less1quizappkt2.base.BaseFragment
 import com.geektech.less1quizappkt2.data.network.result.Status
 import com.geektech.less1quizappkt2.databinding.FragmentMainBinding
 import com.geektech.less1quizappkt2.extensions.toast
+import com.geektech.less1quizappkt2.ui.ViewModel
 import com.geektech.less1quizappkt2.utils.CheckConnectionState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

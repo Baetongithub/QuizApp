@@ -1,4 +1,4 @@
-package com.geektech.less1quizappkt2.ui.explore
+package com.geektech.less1quizappkt2.ui
 
 import androidx.lifecycle.LiveData
 import com.geektech.less1quizappkt2.base.BaseViewModel
