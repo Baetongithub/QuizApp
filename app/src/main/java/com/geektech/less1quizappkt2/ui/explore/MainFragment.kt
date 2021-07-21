@@ -1,4 +1,4 @@
-package com.geektech.less1quizappkt2.ui
+package com.geektech.less1quizappkt2.ui.explore
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

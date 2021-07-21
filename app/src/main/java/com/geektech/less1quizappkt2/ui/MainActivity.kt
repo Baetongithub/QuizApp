@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.geektech.less1quizappkt2.R
 import com.geektech.less1quizappkt2.databinding.ActivityMainBinding
+import com.geektech.less1quizappkt2.ui.explore.MainFragment
 import com.geektech.less1quizappkt2.ui.history.HistoryFragment
+import com.geektech.less1quizappkt2.ui.profile.ProfileFragment
 import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
