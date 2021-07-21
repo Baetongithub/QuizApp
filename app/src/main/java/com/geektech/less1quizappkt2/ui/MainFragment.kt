@@ -29,9 +29,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
         vb.buttonStartMain.setOnClickListener { requireActivity().toast(vb.buttonStartMain.text.toString()) }
     }
 
-    // alpha
     override fun liveData() {
-        viewModel.loadQuestion(10, 24, "easy").observe(this, {
+        viewModel.loadQuestion("10", "24", "easy").observe(this, {
             when (it.status) {
                 Status.SUCCESS -> {
                     requireContext().toast(it.data?.response_code.toString())

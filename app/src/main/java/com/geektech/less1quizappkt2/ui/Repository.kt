@@ -9,8 +9,8 @@ import kotlinx.coroutines.Dispatchers
 
 class Repository(private val openTriviaAPI: OpenTriviaAPI) {
     fun getQuestions(
-        amount: Int?,
-        category: Int?,
+        amount: String?,
+        category: String?,
         difficulty: String?
     ): LiveData<Resource<AllQuestions>> {
         return liveData(Dispatchers.IO) {
