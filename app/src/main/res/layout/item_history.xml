@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -37,7 +38,8 @@
                 android:layout_alignEnd="@id/tv_category_history"
                 android:layout_alignBottom="@id/tv_category_history"
                 android:layout_marginEnd="10dp"
-                android:src="@drawable/vector" />
+                android:src="@drawable/vector"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/tv_correct_answers_history"
@@ -63,7 +65,7 @@
                 android:layout_alignEnd="@id/tv_category_history"
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="7.2dp"
-                android:text="12 may 2019 20:32"
+                android:text="@string/_12_may_2019_20_32"
                 android:textSize="9sp" />
         </RelativeLayout>
 

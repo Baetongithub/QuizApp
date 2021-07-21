@@ -1,18 +1,16 @@
 package com.geektech.less1quizappkt2.ui.history
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.geektech.less1quizappkt2.databinding.FragmentSecondBinding
+import com.geektech.less1quizappkt2.base.BaseFragment
+import com.geektech.less1quizappkt2.databinding.FragmentHistoryBinding
 import com.geektech.less1quizappkt2.extensions.toast
-import com.geektech.less1quizappkt2.model.History
+import com.geektech.less1quizappkt2.data.model.room.History
 
-class SecondFragment : Fragment() {
-
-    private lateinit var ui: FragmentSecondBinding
+class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
+    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentHistoryBinding =
+        FragmentHistoryBinding.inflate(inflater, container, false)
 
     private val list = mutableListOf<History>()
     private val historyAdapter: HistoryAdapter by lazy {
@@ -23,25 +21,25 @@ class SecondFragment : Fragment() {
         )
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        ui = FragmentSecondBinding.inflate(inflater, container, false)
-
-        list.add(History("Mixed", "10/10", "High"))
-        list.add(History("Mixed", "10/10", "Medium"))
-        list.add(History("History", "10/10", "High"))
-        list.add(History("Astronomy", "10/10", "Medium"))
-        list.add(History("Mixed", "10/10", "Medium"))
-
-        ui.recyclerViewHistory.apply {
+    override fun setUI() {
+        vb.recyclerViewHistory.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = historyAdapter
             historyAdapter.notifyDataSetChanged()
         }
 
-        return ui.root
+    }
+
+    override fun liveData() {
+        list.add(History("Mixed", "10/10", "High"))
+        list.add(History("Mixed", "10/10", "Medium"))
+        list.add(History("History", "10/10", "High"))
+        list.add(History("Astronomy", "10/10", "Medium"))
+        list.add(History("Mixed", "10/10", "Medium"))
+    }
+
+    override fun checkConnectionNetworkState() {
+
     }
 
     private fun onItemClick(history: History) {

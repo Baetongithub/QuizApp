@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.geektech.less1quizappkt2.R
 import com.geektech.less1quizappkt2.databinding.ActivityMainBinding
-import com.geektech.less1quizappkt2.ui.fragments.MainFragment
-import com.geektech.less1quizappkt2.ui.fragments.ThirdFragment
-import com.geektech.less1quizappkt2.ui.history.SecondFragment
+import com.geektech.less1quizappkt2.ui.history.HistoryFragment
 import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(ui.root)
 
         val vpAdapter = VPAdapter(this)
-        val fragList = listOf(MainFragment(), SecondFragment(), ThirdFragment())
+        val fragList = listOf(MainFragment(), HistoryFragment(), ProfileFragment())
         vpAdapter.fragList.addAll(fragList)
         ui.viewPager2.adapter = vpAdapter
         ui.viewPager2.isUserInputEnabled = false

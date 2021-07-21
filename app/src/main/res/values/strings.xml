@@ -17,6 +17,12 @@
     <string name="brain_question" translatable="false">?</string>
     <string name="category">Category</string>
     <string name="correct_answers">Correct answers</string>
+    <string name="version">version</string>
+    <string name="clear_history">Clear history</string>
+    <string name="leave_feedback">Leave feedback</string>
+    <string name="rate_us">Rate us</string>
+    <string name="share_this_app">Share this app</string>
+    <string name="_12_may_2019_20_32">12 may 2019 20:32</string>
 
     <string-array name="category_array">
         <item>All</item>

@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.geektech.less1quizappkt2.R
 import com.geektech.less1quizappkt2.databinding.ItemHistoryBinding
 import com.geektech.less1quizappkt2.extensions.inflate
-import com.geektech.less1quizappkt2.extensions.toFormat
-import com.geektech.less1quizappkt2.model.History
+import com.geektech.less1quizappkt2.data.model.room.History
 
 class HistoryAdapter(
     private val list: List<History>,
@@ -42,10 +41,10 @@ class HistoryAdapter(
                 (context.getString(R.string.category) + ": " + history.category)
 
             itemViewBinding.tvCorrectAnswersHistory.text =
-                (context.getString(R.string.correct_answers) + ": " + history.correctAnswers).toFormat()
+                (context.getString(R.string.correct_answers) + ": " + history.correctAnswers)
 
             itemViewBinding.tvDifficultyHistory.text =
-                (context.getString(R.string.difficulty) + ": " + history.difficulty).toFormat()
+                (context.getString(R.string.difficulty) + ": " + history.difficulty)
         }
     }
 }

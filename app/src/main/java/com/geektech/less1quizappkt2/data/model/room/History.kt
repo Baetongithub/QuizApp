@@ -1,4 +1,4 @@
-package com.geektech.less1quizappkt2.model
+package com.geektech.less1quizappkt2.data.model.room
 
 data class History(
     val category: String,
