@@ -10,7 +10,6 @@ import com.geektech.less1quizappkt2.base.BaseFragment
 import com.geektech.less1quizappkt2.data.network.result.Status
 import com.geektech.less1quizappkt2.databinding.FragmentMainBinding
 import com.geektech.less1quizappkt2.extensions.toast
-import com.geektech.less1quizappkt2.ui.ViewModel
 import com.geektech.less1quizappkt2.utils.CheckConnectionState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,47 +20,63 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
     private val viewModel: ViewModel by viewModel()
     private val ccs: CheckConnectionState by lazy { CheckConnectionState(requireActivity().application) }
     private var isConnected = true
+//    private lateinit var seekBarAmountTxt: String
+
+    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+        vb.tvSeekBarTick.text = progress.toString()
+    }
 
     override fun setUI() {
         vb.seekBarMain.setOnSeekBarChangeListener(this)
 
         setUpDropDownButtons()
 
-        vb.buttonStartMain.setOnClickListener { requireActivity().toast(vb.buttonStartMain.text.toString()) }
+//        vb.buttonStartMain.setOnClickListener {
+//            getData(vb.tvSeekBarTick.text.toString().toInt(), 18, vb.autoCompleteTVDifficulty.text.toString())
+//        }
     }
 
     override fun liveData() {
-        viewModel.loadQuestion("10", "24", "easy").observe(this, {
-            when (it.status) {
+        getData(vb.tvSeekBarTick.text.toString(), null, null)
+    }
+
+    private fun getData(amountTxt: String, category: Int?, difficulty: String?) {
+        viewModel.loadQuestion(amountTxt.toInt(), category, difficulty).observe(this, { resource ->
+            when (resource.status) {
                 Status.SUCCESS -> {
-                    requireContext().toast(it.data?.response_code.toString())
-                    requireContext().toast(it.data?.results?.get(0)?.question.toString())
-                    requireContext().toast(it.data?.results?.get(0)?.incorrect_answers.toString())
+                    resource.data?.results?.get(0)?.category?.forEach {
+                        val categories = mutableListOf(it)
+                        val categoriesAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_items, categories)
+                        vb.autoCompleteTVCategory.setAdapter(categoriesAdapter)
+                    }
+                    vb.autoCompleteTVCategory.setDropDownBackgroundDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.backgr_all
+                        )
+                    )
+                    requireContext().toast(resource.data?.response_code.toString())
+                    requireContext().toast(resource.data?.results?.get(0)?.question.toString())
+                    requireContext().toast(resource.data?.results?.get(0)?.incorrect_answers.toString())
                 }
-                Status.ERROR -> {
-                    requireContext().toast(it.message + it.code)
-                }
-                Status.LOADING -> {
-                    requireContext().toast("Loading")
-                }
+                Status.ERROR -> requireContext().toast(resource.message + resource.code)
+                Status.LOADING -> requireContext().toast("Loading")
             }
         })
     }
 
-    override fun checkConnectionNetworkState() {
-        ccs.observe(this, { isConnected = it })
-    }
+    override fun checkConnectionNetworkState() = ccs.observe(this, { isConnected = it })
 
     private fun setUpDropDownButtons() {
-        val categories = resources.getStringArray(R.array.category_array)
-        val categoriesAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_items, categories)
-        vb.autoCompleteTVCategory.setAdapter(categoriesAdapter)
-        vb.autoCompleteTVCategory.setDropDownBackgroundDrawable(
-            ContextCompat.getDrawable(
-                requireContext(),
-                R.drawable.backgr_all
-            )
-        )
+//        val categories = resources.getStringArray(R.array.category_array)
+//        val categoriesAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_items, categories)
+//        vb.autoCompleteTVCategory.setAdapter(categoriesAdapter)
+//        vb.autoCompleteTVCategory.setDropDownBackgroundDrawable(
+//            ContextCompat.getDrawable(
+//                requireContext(),
+//                R.drawable.backgr_all
+//            )
+//        )
 
         val difficulties = resources.getStringArray(R.array.difficulty_array)
         val difficultiesAdapter =
@@ -73,10 +88,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
                 R.drawable.backgr_all
             )
         )
-    }
-
-    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-        vb.tvSeekBarTick.text = progress.toString()
     }
 
     override fun onStartTrackingTouch(seekBar: SeekBar?) {

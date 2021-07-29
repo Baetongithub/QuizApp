@@ -19,9 +19,9 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = viewBinding(inflater, container)
 
+        checkConnectionNetworkState()
         setUI()
         liveData()
-        checkConnectionNetworkState()
 
         return vb.root
     }

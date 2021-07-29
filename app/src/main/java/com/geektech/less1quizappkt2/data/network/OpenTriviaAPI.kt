@@ -10,10 +10,16 @@ interface OpenTriviaAPI {
     @GET("api.php")
     suspend fun getQuestions(
         @Query("amount")
-        amount: String,
+        amount: Int,
         @Query("category")
-        category: String,
+        category: Int?,
         @Query("difficulty")
-        difficulty: String
+        difficulty: String?
+    ): Response<AllQuestions>
+
+    @GET("api.php")
+    suspend fun getAllQuestions(
+        @Query("amount")
+        amount: Int
     ): Response<AllQuestions>
 }

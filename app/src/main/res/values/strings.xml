@@ -32,9 +32,9 @@
     </string-array>
 
     <string-array name="difficulty_array">
-        <item>All</item>
-        <item>Elementary</item>
-        <item>Medium</item>
-        <item>Max difficulty</item>
+        <item>Any Difficulty</item>
+        <item>easy</item>
+        <item>medium</item>
+        <item>hard</item>
     </string-array>
 </resources>
