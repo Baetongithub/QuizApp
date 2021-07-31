@@ -17,9 +17,4 @@ interface OpenTriviaAPI {
         difficulty: String?
     ): Response<AllQuestions>
 
-    @GET("api.php")
-    suspend fun getAllQuestions(
-        @Query("amount")
-        amount: Int
-    ): Response<AllQuestions>
 }

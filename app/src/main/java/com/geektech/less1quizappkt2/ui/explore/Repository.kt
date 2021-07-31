@@ -16,13 +16,13 @@ class Repository(private val openTriviaAPI: OpenTriviaAPI) {
         return liveData(Dispatchers.IO) {
             emit(Resource.loading(null))
             if (category == null && difficulty == null) {
-                val response = openTriviaAPI.getAllQuestions(amount!!)
+                val response = openTriviaAPI.getQuestions(amount!!, null, null)
                 emit(
                     if (response.isSuccessful) Resource.success(response.body())
                     else Resource.error(response.message(), response.body(), response.code())
                 )
             } else {
-                val response = openTriviaAPI.getQuestions(amount!!, category!!, difficulty!!)
+                val response = openTriviaAPI.getQuestions(amount!!, category, difficulty)
                 emit(
                     if (response.isSuccessful) Resource.success(response.body())
                     else Resource.error(response.message(), response.body(), response.code())
