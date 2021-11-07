@@ -30,4 +30,9 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     abstract fun setUpUI()
     abstract fun liveData()
     abstract fun checkConnectionNetworkState()
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 }
