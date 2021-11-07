@@ -16,13 +16,14 @@ import com.geektech.less1quizappkt2.utils.CheckConnectionState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChangeListener {
-    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentMainBinding =
-        FragmentMainBinding.inflate(inflater, container, false)
 
     private val viewModel: ViewModel by viewModel()
     private val ccs: CheckConnectionState by lazy { CheckConnectionState(requireActivity().application) }
-    private var isConnected = true
+    private var isConnected = false
 //    private lateinit var seekBarAmountTxt: String
+
+    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentMainBinding =
+        FragmentMainBinding.inflate(inflater, container, false)
 
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
         vb.tvSeekBarTick.text = progress.toString()
@@ -71,15 +72,17 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
     private fun setDDCategoriesButtons(resource: Resource<Categories?>) {
 
         val categories = mutableListOf<String>()
+        val categoriesWIndexes = mutableListOf<Int>()
         if (resource.data?.trivia_categories != null) {
-            for (items in resource.data.trivia_categories) {
+            resource.data.trivia_categories.forEachIndexed { index, items ->
                 if (items.name != null) {
                     categories.add(items.name)
                     categories.sort()
+                    categoriesWIndexes.add(index)
                 }
             }
         }
-        val categoriesAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_items, categories)
+        val categoriesAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_items, categories)
         vb.autoCompleteTVCategory.setAdapter(categoriesAdapter)
         vb.autoCompleteTVCategory.setDropDownBackgroundDrawable(
             ContextCompat.getDrawable(
