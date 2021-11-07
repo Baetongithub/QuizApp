@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
     buildFeatures {
         viewBinding true
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId "com.geektech.less1quizappkt2"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -39,11 +39,11 @@ android {
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
 
     //Room
     def room_version = "2.3.0"
@@ -62,19 +62,13 @@ dependencies {
     implementation "io.insert-koin:koin-androidx-fragment:2.2.2"
 
     // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
 
     // Lifecycle
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
-
-    // крч, вышла такая ошибка, в облаке предложили добавить эти строки
-    // The given artifact contains a string literal with a package reference 'android.support.v4' that cannot be safely rewritten.
-    // Libraries using reflection such as annotation processors need to be updated manually to add support for androidx.
-    //implementation 'com.jakewharton:butterknife:10.0.0'
-    //annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

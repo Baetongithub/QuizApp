@@ -3,6 +3,7 @@ package com.geektech.less1quizappkt2.ui.explore
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.geektech.less1quizappkt2.data.model.remote.AllQuestions
+import com.geektech.less1quizappkt2.data.model.remote.categories.Categories
 import com.geektech.less1quizappkt2.data.network.OpenTriviaAPI
 import com.geektech.less1quizappkt2.data.network.result.Resource
 import kotlinx.coroutines.Dispatchers
@@ -29,5 +30,14 @@ class Repository(private val openTriviaAPI: OpenTriviaAPI) {
                 )
             }
         }
+    }
+
+    fun getCategories(): LiveData<Resource<Categories>> = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        val responseCategories = openTriviaAPI.getCategories()
+        emit(
+            if (responseCategories.isSuccessful) Resource.success(responseCategories.body())
+            else Resource.error(responseCategories.message(), responseCategories.body(), responseCategories.code())
+        )
     }
 }

@@ -20,14 +20,14 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         binding = viewBinding(inflater, container)
 
         checkConnectionNetworkState()
-        setUI()
+        setUpUI()
         liveData()
 
         return vb.root
     }
 
     abstract fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): VB
-    abstract fun setUI()
+    abstract fun setUpUI()
     abstract fun liveData()
     abstract fun checkConnectionNetworkState()
 }

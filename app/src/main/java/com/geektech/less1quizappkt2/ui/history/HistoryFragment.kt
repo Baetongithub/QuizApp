@@ -21,7 +21,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
         )
     }
 
-    override fun setUI() {
+    override fun setUpUI() {
         vb.recyclerViewHistory.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = historyAdapter

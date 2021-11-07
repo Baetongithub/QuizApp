@@ -1,6 +1,7 @@
-package com.geektech.less1quizappkt2.data.network
+package com.geektech.less1quizappkt2.di
 
 import com.geektech.less1quizappkt2.BuildConfig.BASE_URL
+import com.geektech.less1quizappkt2.data.network.OpenTriviaAPI
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit
 val networkModules = module {
     single { provideNetwork(get()) }
     factory { provideOkHttpClient() }
-    factory { provideQuestions(get()) }
+    single { provideQuestions(get()) }
 }
 
 fun provideNetwork(okHttpClient: OkHttpClient): Retrofit {

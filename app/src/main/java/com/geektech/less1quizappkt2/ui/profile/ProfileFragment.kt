@@ -11,13 +11,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentProfileBinding =
         FragmentProfileBinding.inflate(inflater, container, false)
 
-    override fun setUI() {
+    override fun setUpUI() {
         vb.tvVersionSettings.text = ("v ${BuildConfig.VERSION_NAME}")
 
         initClicks()
     }
 
     override fun liveData() {
+
     }
 
     override fun checkConnectionNetworkState() {
