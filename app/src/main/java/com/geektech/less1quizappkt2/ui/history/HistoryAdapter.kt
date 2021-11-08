@@ -1,6 +1,7 @@
 package com.geektech.less1quizappkt2.ui.history
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -16,8 +17,7 @@ class HistoryAdapter(
 ) : RecyclerView.Adapter<HistoryAdapter.TheViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TheViewHolder {
-        val view = parent.inflate(R.layout.item_history)
-        return TheViewHolder(view, context)
+         return TheViewHolder(ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false), context)
     }
 
     override fun onBindViewHolder(holder: TheViewHolder, position: Int) {
@@ -30,10 +30,8 @@ class HistoryAdapter(
         return list.size
     }
 
-    class TheViewHolder(itemView: View, private val context: Context) :
-        RecyclerView.ViewHolder(itemView) {
-
-        private var itemViewBinding = ItemHistoryBinding.bind(itemView)
+    class TheViewHolder(private val itemViewBinding: ItemHistoryBinding, private val context: Context) :
+        RecyclerView.ViewHolder(itemViewBinding.root) {
 
         fun bind(history: History) {
 

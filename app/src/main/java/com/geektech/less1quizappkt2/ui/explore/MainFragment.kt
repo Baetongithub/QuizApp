@@ -25,6 +25,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
     override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentMainBinding =
         FragmentMainBinding.inflate(inflater, container, false)
 
+    override fun checkConnectionNetworkState() = ccs.observe(this, { isConnected = it })
+
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
         vb.tvSeekBarTick.text = progress.toString()
     }
@@ -67,22 +69,20 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
         })
     }
 
-    override fun checkConnectionNetworkState() = ccs.observe(this, { isConnected = it })
-
     private fun setDDCategoriesButtons(resource: Resource<Categories?>) {
 
-        val categories = mutableListOf<String>()
+        val categoriesList = mutableListOf<String>()
         val categoriesWIndexes = mutableListOf<Int>()
         if (resource.data?.trivia_categories != null) {
             resource.data.trivia_categories.forEachIndexed { index, items ->
                 if (items.name != null) {
-                    categories.add(items.name)
-                    categories.sort()
+                    categoriesList.add(items.name)
+                    categoriesList.sort()
                     categoriesWIndexes.add(index)
                 }
             }
         }
-        val categoriesAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_items, categories)
+        val categoriesAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_items, categoriesList)
         vb.autoCompleteTVCategory.setAdapter(categoriesAdapter)
         vb.autoCompleteTVCategory.setDropDownBackgroundDrawable(
             ContextCompat.getDrawable(
