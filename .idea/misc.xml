@@ -3,8 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android 1/Less1QuizAppkt2/app/src/main/res/font/.xml" value="0.1299342105263158" />
+        <entry key="..\:/Android 1/Less1QuizAppkt2/app/src/main/res/font/arbutus.xml" value="0.1299342105263158" />
+        <entry key="..\:/Android 1/Less1QuizAppkt2/app/src/main/res/font/tauri.xml" value="0.1299342105263158" />
         <entry key="..\:/Android 1/Less1QuizAppkt2/app/src/main/res/layout/activity_launch.xml" value="0.1" />
         <entry key="..\:/Android 1/Less1QuizAppkt2/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Android 1/Less1QuizAppkt2/app/src/main/res/layout/dropdown_items.xml" value="0.1" />
+        <entry key="..\:/Android 1/Less1QuizAppkt2/app/src/main/res/layout/fragment_history.xml" value="0.11085526315789473" />
+        <entry key="..\:/Android 1/Less1QuizAppkt2/app/src/main/res/layout/fragment_main.xml" value="0.13333333333333333" />
+        <entry key="..\:/Android 1/Less1QuizAppkt2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>

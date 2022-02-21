@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.explore.MainFragment">
+    tools:context=".ui.main.MainFragment">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -96,7 +96,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTVCategory"
                     style="@style/autocompleteTV_dropdown"
-                    android:text="@string/all"
+                    android:text="@string/any_categories"
                     tools:ignore="LabelFor" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -126,7 +126,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTV_difficulty"
                     style="@style/autocompleteTV_dropdown"
-                    android:text="@string/all"
+                    android:text="@string/any_difficulty"
                     tools:ignore="LabelFor" />
 
             </com.google.android.material.textfield.TextInputLayout>

@@ -1,4 +1,4 @@
-package com.geektech.less1quizappkt2.ui.explore
+package com.geektech.less1quizappkt2.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -16,7 +16,7 @@ class Repository(private val openTriviaAPI: OpenTriviaAPI) {
     ): LiveData<Resource<AllQuestions>> {
         return liveData(Dispatchers.IO) {
             emit(Resource.loading(null))
-            if (category == null && difficulty == null) {
+            if (category == null || difficulty == null) {
                 val response = openTriviaAPI.getQuestions(amount!!, null, null)
                 emit(
                     if (response.isSuccessful) Resource.success(response.body())

@@ -1,4 +1,4 @@
-package com.geektech.less1quizappkt2.ui.explore
+package com.geektech.less1quizappkt2.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,6 +14,7 @@ import com.geektech.less1quizappkt2.databinding.FragmentMainBinding
 import com.geektech.less1quizappkt2.extensions.toast
 import com.geektech.less1quizappkt2.utils.CheckConnectionState
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChangeListener {
 
@@ -36,7 +37,24 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
         setDDDifficultiesButtons()
 
         vb.buttonStartMain.setOnClickListener {
-            loadQuestions(vb.tvSeekBarTick.text.toString(), 18, vb.autoCompleteTVDifficulty.text.toString())
+            when {
+                vb.autoCompleteTVDifficulty.text.toString() == context?.getString(R.string.any_difficulty) -> loadQuestions(
+                    vb.tvSeekBarTick.text.toString(),
+                    18,
+                    null
+                )
+                vb.autoCompleteTVCategory.text.toString() == context?.getString(R.string.any_categories) -> loadQuestions(
+                    vb.tvSeekBarTick.text.toString(),
+                    null,
+                    vb.autoCompleteTVDifficulty.text.toString().decapitalize(Locale.ROOT)
+                )
+                //decapitalize - to decapitlize any strings if theres cap letters
+                else -> loadQuestions(
+                    vb.tvSeekBarTick.text.toString(),
+                    18,
+                    vb.autoCompleteTVDifficulty.text.toString().decapitalize(Locale.ROOT)
+                )
+            }
         }
     }
 
@@ -76,9 +94,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
         if (resource.data?.trivia_categories != null) {
             resource.data.trivia_categories.forEachIndexed { index, items ->
                 if (items.name != null) {
+                    categoriesWIndexes.add(index)
                     categoriesList.add(items.name)
                     categoriesList.sort()
-                    categoriesWIndexes.add(index)
                 }
             }
         }

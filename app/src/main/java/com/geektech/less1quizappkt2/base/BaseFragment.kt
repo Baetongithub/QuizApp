@@ -27,9 +27,9 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     }
 
     abstract fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): VB
-    abstract fun setUpUI()
-    abstract fun liveData()
     abstract fun checkConnectionNetworkState()
+    abstract fun liveData()
+    abstract fun setUpUI()
 
     override fun onDestroyView() {
         super.onDestroyView()
