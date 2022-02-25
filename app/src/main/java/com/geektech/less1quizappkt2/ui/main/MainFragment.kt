@@ -40,14 +40,14 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
         // start button - check difficulties & categ-s before start
         vb.buttonStartMain.setOnClickListener {
             when {
-                // check diff-s was selected or not
+                // check diff-s wasn't selected
                 vb.autoCompleteTVDifficulty.text.toString() == context?.getString(R.string.any_difficulty) -> loadQuestions(
                     vb.tvSeekBarTick.text.toString(),
                     categoriesList.indexOf(vb.autoCompleteTVCategory.text.toString()) + 9,
                     null
                 )
-                //check categ-s was selected or not
-                //decapitalize - to decapitlize any strings if theres cap letters
+                //check categ-s wasn't selected
+                //decapitalize - decapitlizes strings if theres cap letters
                 vb.autoCompleteTVCategory.text.toString() == context?.getString(R.string.all_categories) -> loadQuestions(
                     vb.tvSeekBarTick.text.toString(),
                     null,
