@@ -21,6 +21,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
     private val viewModel: ViewModel by viewModel()
     private val ccs: CheckConnectionState by lazy { CheckConnectionState(requireActivity().application) }
     private var isConnected = false
+    private val categoriesList = mutableListOf<String>()
 //    private lateinit var seekBarAmountTxt: String
 
     override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentMainBinding =
@@ -36,25 +37,29 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
         vb.seekBarMain.setOnSeekBarChangeListener(this)
         setDDDifficultiesButtons()
 
+        // start button - check difficulties & categ-s before start
         vb.buttonStartMain.setOnClickListener {
             when {
+                // check diff-s was selected or not
                 vb.autoCompleteTVDifficulty.text.toString() == context?.getString(R.string.any_difficulty) -> loadQuestions(
                     vb.tvSeekBarTick.text.toString(),
-                    18,
+                    categoriesList.indexOf(vb.autoCompleteTVCategory.text.toString()) + 9,
                     null
                 )
-                vb.autoCompleteTVCategory.text.toString() == context?.getString(R.string.any_categories) -> loadQuestions(
+                //check categ-s was selected or not
+                //decapitalize - to decapitlize any strings if theres cap letters
+                vb.autoCompleteTVCategory.text.toString() == context?.getString(R.string.all_categories) -> loadQuestions(
                     vb.tvSeekBarTick.text.toString(),
                     null,
                     vb.autoCompleteTVDifficulty.text.toString().decapitalize(Locale.ROOT)
                 )
-                //decapitalize - to decapitlize any strings if theres cap letters
                 else -> loadQuestions(
                     vb.tvSeekBarTick.text.toString(),
-                    18,
+                    categoriesList.indexOf(vb.autoCompleteTVCategory.text.toString()) + 9,
                     vb.autoCompleteTVDifficulty.text.toString().decapitalize(Locale.ROOT)
                 )
             }
+            context?.toast((categoriesList.indexOf(vb.autoCompleteTVCategory.text.toString()) + 9).toString())
         }
     }
 
@@ -80,23 +85,23 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
     private fun loadCategories() {
         viewModel.getCategories().observe(this, { resource ->
             when (resource.status) {
-                Status.SUCCESS -> setDDCategoriesButtons(resource)
+                Status.SUCCESS -> setDDCategoriesButton(resource)
                 Status.ERROR -> requireActivity().toast(resource.message + resource.code)
                 Status.LOADING -> requireActivity().toast("Loading")
             }
         })
     }
 
-    private fun setDDCategoriesButtons(resource: Resource<Categories?>) {
+    private fun setDDCategoriesButton(resource: Resource<Categories?>) {
 
-        val categoriesList = mutableListOf<String>()
         val categoriesWIndexes = mutableListOf<Int>()
         if (resource.data?.trivia_categories != null) {
+            categoriesList.add(context?.getString(R.string.all_categories).toString())
             resource.data.trivia_categories.forEachIndexed { index, items ->
                 if (items.name != null) {
                     categoriesWIndexes.add(index)
                     categoriesList.add(items.name)
-                    categoriesList.sort()
+                    //categoriesList.sort()
                 }
             }
         }
@@ -108,6 +113,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), SeekBar.OnSeekBarChang
                 R.drawable.backgr_all
             )
         )
+        //context?.toast(categoriesAdapter.getPosition(vb.autoCompleteTVCategory.text.toString()).toString())
     }
 
     private fun setDDDifficultiesButtons() {

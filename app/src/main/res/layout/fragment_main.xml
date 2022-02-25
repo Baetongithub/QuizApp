@@ -96,7 +96,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTVCategory"
                     style="@style/autocompleteTV_dropdown"
-                    android:text="@string/any_categories"
+                    android:text="@string/all_categories"
                     tools:ignore="LabelFor" />
 
             </com.google.android.material.textfield.TextInputLayout>
