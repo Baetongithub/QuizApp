@@ -39,7 +39,6 @@
 
     <style name="style_settings_tv">
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:backgroundTint">@color/white</item>
         <item name="android:drawableEnd">@drawable/ic_right_24</item>
         <item name="android:textSize">18sp</item>
         <item name="android:layout_marginTop">10dp</item>

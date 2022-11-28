@@ -7,20 +7,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.geektech.less1quizappkt2.base.BaseFragment
 import com.geektech.less1quizappkt2.databinding.FragmentHistoryBinding
 import com.geektech.less1quizappkt2.extensions.toast
-import com.geektech.less1quizappkt2.data.model.room.History
+import com.geektech.less1quizappkt2.data.model.local.History
 import com.geektech.less1quizappkt2.utils.CheckConnectionState
 
-class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
+class HistoryFragment : BaseFragment<FragmentHistoryBinding>(FragmentHistoryBinding::inflate) {
 
     private var isConnected = false
     private val ccs: CheckConnectionState by lazy { CheckConnectionState(requireActivity().application) }
     private val list = mutableListOf<History>()
     private val historyAdapter: HistoryAdapter by lazy { HistoryAdapter(list, requireContext(), this::onItemClick) }
 
-    override fun viewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentHistoryBinding =
-        FragmentHistoryBinding.inflate(inflater, container, false)
-
-    override fun checkConnectionNetworkState() = ccs.observe(this, { isConnected = it })
+    override fun checkConnectionNetworkState() = ccs.observe(this) { isConnected = it }
 
     @SuppressLint("NotifyDataSetChanged")
     override fun setUpUI() {

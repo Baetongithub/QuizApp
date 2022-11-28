@@ -2,13 +2,11 @@ package com.geektech.less1quizappkt2.ui.history
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.geektech.less1quizappkt2.R
 import com.geektech.less1quizappkt2.databinding.ItemHistoryBinding
-import com.geektech.less1quizappkt2.extensions.inflate
-import com.geektech.less1quizappkt2.data.model.room.History
+import com.geektech.less1quizappkt2.data.model.local.History
 
 class HistoryAdapter(
     private val list: List<History>,
@@ -36,13 +34,13 @@ class HistoryAdapter(
         fun bind(history: History) {
 
             itemViewBinding.tvCategoryHistory.text =
-                (context.getString(R.string.category) + ": " + history.category)
+                String.format(context.getString(R.string.category) + ": " + history.category)
 
             itemViewBinding.tvCorrectAnswersHistory.text =
-                (context.getString(R.string.correct_answers) + ": " + history.correctAnswers)
+                String.format(context.getString(R.string.correct_answers) + ": " + history.correctAnswers)
 
             itemViewBinding.tvDifficultyHistory.text =
-                (context.getString(R.string.difficulty) + ": " + history.difficulty)
+                String.format(context.getString(R.string.difficulty) + ": " + history.difficulty)
         }
     }
 }
