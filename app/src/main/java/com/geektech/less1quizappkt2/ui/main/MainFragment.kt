@@ -3,6 +3,7 @@ package com.geektech.less1quizappkt2.ui.main
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.geektech.less1quizappkt2.R
 import com.geektech.less1quizappkt2.base.BaseFragment
 import com.geektech.less1quizappkt2.data.model.remote.categories.Categories
@@ -34,6 +35,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
         // start button - check difficulties & categ-s before start
         vb.buttonStartMain.setOnClickListener {
+
+            findNavController().navigate(R.id.quizPageFragment)
+
             when {
                 // check diff-s wasn't selected
                 vb.autoCompleteTVDifficulty.text.toString() == context?.getString(R.string.any_difficulty) -> loadQuestions(
