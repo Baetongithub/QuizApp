@@ -9,7 +9,15 @@
         android:id="@+id/viewPagerFragment"
         android:name="com.geektech.less1quizappkt2.ui.ViewPagerFragment"
         android:label="fragment_view_pager"
-        tools:layout="@layout/fragment_view_pager" />
+        tools:layout="@layout/fragment_view_pager">
+        <action
+            android:id="@+id/action_viewPagerFragment_to_quizPageFragment"
+            app:destination="@id/quizPageFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
 
     <fragment
         android:id="@+id/mainFragment"

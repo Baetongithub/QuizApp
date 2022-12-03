@@ -36,8 +36,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         // start button - check difficulties & categ-s before start
         vb.buttonStartMain.setOnClickListener {
 
-            findNavController().navigate(R.id.quizPageFragment)
-
             when {
                 // check diff-s wasn't selected
                 vb.autoCompleteTVDifficulty.text.toString() == context?.getString(R.string.any_difficulty) -> loadQuestions(
@@ -59,7 +57,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 )
             }
             toast((categoriesList.indexOf(vb.autoCompleteTVCategory.text.toString()) + 9).toString())
-
+            findNavController().navigate(R.id.action_viewPagerFragment_to_quizPageFragment)
         }
     }
 
